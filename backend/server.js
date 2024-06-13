@@ -7,8 +7,9 @@ const app = express();
 app.use(cors());
 
 const accountSid = process.env.TWILIO_ACCOUNT_SID;
-const authToken = process.env.TWILIO_AUTH_TOKEN;
-const client = twilio(accountSid, authToken);
+const apiKey = process.env.TWILIO_API_KEY;
+const apiSecret = process.env.TWILIO_API_SECRET;
+const client = twilio(apiKey, apiSecret, { accountSid });
 
 app.get('/messages', async (req, res) => {
   try {
